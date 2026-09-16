@@ -9,6 +9,10 @@ measured rather than demoed.
 The thing I care about: an AI system you can't evaluate is a prototype, whatever
 it is running on. Retrieval quality belongs in CI next to the unit tests.
 
+That applies to how I build, too. I lean on AI heavily and measure everything it
+produces — the `DECISIONS.md` in the RAG repo below is what the measuring part
+looks like, and what the tooling can't hand you.
+
 ---
 
 ## What I've built
