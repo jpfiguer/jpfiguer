@@ -1,6 +1,6 @@
 # Juan Pablo Figueroa
 
-**AI & Data Engineer** · Santiago, Chile · Google Cloud certified
+**AI & Data Engineer** · Santiago, Chile · Google Cloud Generative AI Leader
 
 I work at the point where data engineering meets applied AI. Ten years building
 production data pipelines on GCP, and the last two shipping RAG systems that are
