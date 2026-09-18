@@ -46,8 +46,8 @@ collections and customer service.
 
 ## Public code
 
-Two repositories extracted from production systems — the transferable parts,
-with the hard decisions documented:
+**Extracted from production systems** — the transferable parts, with the hard
+decisions documented:
 
 **[rag-hybrid-citations](https://github.com/jpfiguer/rag-hybrid-citations)**
 Hybrid RAG on Postgres + pgvector. Dense and BM25 fused with Reciprocal Rank
@@ -56,17 +56,35 @@ can verify them, and an explicit refusal path for when the corpus doesn't hold
 the answer. Its `DECISIONS.md` covers eight bugs paid for in production —
 including three chained failures where each fix caused the next.
 
+**[guided-visual-check](https://github.com/jpfiguer/guided-visual-check)**
+Reference-guided visual inspection. The model reports evidence with a
+confidence; the decision to report a failure or send it to a human lives in
+twenty lines of auditable code, not in the prompt. Angles and orientations are
+handed over measured, because that is the question vision models answer
+confidently and wrongly.
+
+**[sistema-helper-en](https://github.com/jpfiguer/sistema-helper-en)**
+Technical interview trainer in English, built on a real-time voice pipeline.
+The numbers are computed by code and the judgement comes from the model, shown
+separately — if the metric you measure progress with can hallucinate, the
+progress you see is noise.
+
 **[surveybq-engine](https://github.com/jpfiguer/surveybq-engine)**
 CSAT/NPS survey engine with no dependencies and no build step. Responder,
 visual editor, analytics panel, BigQuery output. Static files, because whoever
 scans a QR code arrives on a clean browser, on some phone, sometimes without
 signal — every kilobyte and every build step is a way for that to fail.
 
-Reference implementations of patterns I use:
-[gcp-etl-pipeline](https://github.com/jpfiguer/gcp-etl-pipeline) ·
-[rag-crag-reference](https://github.com/jpfiguer/rag-crag-reference) ·
-[multi-tenant-saas-starter](https://github.com/jpfiguer/multi-tenant-saas-starter) ·
-[case studies](https://github.com/jpfiguer/portfolio)
+**Reference implementations** of patterns I use, written as synthetic code so
+the pattern is visible without any client material:
+[gcp-etl-pipeline](https://github.com/jpfiguer/gcp-etl-pipeline) — Beam on
+Dataflow, Pub/Sub, Dataform, Terraform ·
+[rag-crag-reference](https://github.com/jpfiguer/rag-crag-reference) — CRAG
+dual-judge grading, reranker circuit breaker, RAGAS eval ·
+[multi-tenant-saas-starter](https://github.com/jpfiguer/multi-tenant-saas-starter)
+— tenant isolation from day one ·
+[case studies](https://github.com/jpfiguer/portfolio) — five production systems,
+how each was decided and measured
 
 ---
 
@@ -87,7 +105,8 @@ GitHub Actions · Prometheus · OpenTelemetry · Sentry
 
 ---
 
-Open to remote roles. Spanish native, working English.
+Open to remote roles. Spanish native; English is professional in reading and
+writing, conversational spoken.
 
 [jpablofigueroar@gmail.com](mailto:jpablofigueroar@gmail.com) ·
 [LinkedIn](https://linkedin.com/in/juan-pablo-mac-fig)
