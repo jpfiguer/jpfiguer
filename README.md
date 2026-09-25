@@ -8,10 +8,10 @@ building RAG systems that run in production.
 On production RAG systems I run retrieval evaluation in CI next to the unit
 tests, and I capture the evaluation baselines from real traffic.
 
-I use AI tools heavily when I build. In production that code goes through the
-same tests and evaluation as any other, and when something breaks I write down
-the cause and the fix. The `DECISIONS.md` in rag-hybrid-citations below is an
-example.
+I use AI tools heavily when I build. In production, the code they help write
+goes through the same tests and evaluation as any other, and when something
+breaks I write down the cause and the fix. The `DECISIONS.md` in
+rag-hybrid-citations below is an example.
 
 ---
 
@@ -47,45 +47,37 @@ Spanish-language collections and customer service.
 
 ## Public code
 
-**Extracted from production systems** — the transferable parts, with the hard
-decisions documented:
-
 **[rag-hybrid-citations](https://github.com/jpfiguer/rag-hybrid-citations)**
-Hybrid RAG on Postgres + pgvector. Dense and BM25 fused with Reciprocal Rank
-Fusion inside SQL, citations that carry document, page and section so a reader
-can verify them, and an explicit refusal path for when the corpus doesn't hold
-the answer. Its `DECISIONS.md` covers eight bugs paid for in production —
-including three chained failures where each fix caused the next.
+Extracted from a RAG system in production. Hybrid RAG on Postgres + pgvector:
+dense search and Postgres full-text search fused with Reciprocal Rank Fusion
+inside SQL. Citations carry document, page and section so a reader can verify
+them, and there is an explicit refusal path for when the corpus doesn't hold
+the answer. Its `DECISIONS.md` covers eight bugs and design decisions from
+production, including three chained failures where each fix caused the next.
 
 **[guided-visual-check](https://github.com/jpfiguer/guided-visual-check)**
-Reference-guided visual inspection. The model reports evidence with a
-confidence; the decision to report a failure or send it to a human lives in
-twenty lines of auditable code, not in the prompt. Angles and orientations are
-handed over measured, because that is the question vision models answer
-confidently and wrongly.
+Extracted from an inspection system running at real sites. Reference-guided
+visual inspection: the model reports evidence with a confidence score, and
+about twenty lines of auditable code, outside the prompt, decide whether a
+finding is reported as a failure or sent to a human. Angles and orientations
+are passed in as measurements, because vision models often get them wrong with
+high confidence.
 
 **[sistema-helper-en](https://github.com/jpfiguer/sistema-helper-en)**
 Technical interview trainer in English, built on a real-time voice pipeline.
-The numbers are computed by code and the judgement comes from the model, shown
-separately — if the metric you measure progress with can hallucinate, the
-progress you see is noise.
+The numbers are computed by code and the judgment comes from the model, and the
+two are shown separately. The progress report across sessions doesn't call the
+model at all.
 
-**[surveybq-engine](https://github.com/jpfiguer/surveybq-engine)**
-CSAT/NPS survey engine with no dependencies and no build step. Responder,
-visual editor, analytics panel, BigQuery output. Static files, because whoever
-scans a QR code arrives on a clean browser, on some phone, sometimes without
-signal — every kilobyte and every build step is a way for that to fail.
+**[gcp-etl-pipeline](https://github.com/jpfiguer/gcp-etl-pipeline)**
+Reference implementation of patterns I use on GCP, written as synthetic code
+with no client material. Apache Beam on Dataflow, Pub/Sub, Dataform, and
+Terraform for the Pub/Sub, BigQuery and service account resources.
 
-**Reference implementations** of patterns I use, written as synthetic code so
-the pattern is visible without any client material:
-[gcp-etl-pipeline](https://github.com/jpfiguer/gcp-etl-pipeline) — Beam on
-Dataflow, Pub/Sub, Dataform, Terraform ·
-[rag-crag-reference](https://github.com/jpfiguer/rag-crag-reference) — CRAG
-dual-judge grading, reranker circuit breaker, RAGAS eval ·
-[multi-tenant-saas-starter](https://github.com/jpfiguer/multi-tenant-saas-starter)
-— tenant isolation from day one ·
-[case studies](https://github.com/jpfiguer/portfolio) — five production systems,
-how each was decided and measured
+**[portfolio](https://github.com/jpfiguer/portfolio)**
+Case studies of five production systems and how each was decided and measured,
+in Spanish. Also published at
+[jpfiguer.github.io/portfolio](https://jpfiguer.github.io/portfolio/).
 
 ---
 
