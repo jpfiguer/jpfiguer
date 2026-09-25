@@ -1,46 +1,47 @@
 # Juan Pablo Figueroa
 
-**AI & Data Engineer** · Santiago, Chile · Google Cloud Generative AI Leader
+**AI & Data Engineer** · Santiago, Chile · Google Cloud Certified – Generative AI Leader (2026)
 
-I work at the point where data engineering meets applied AI. Ten years building
-production data pipelines on GCP, and the last two shipping RAG systems that are
-measured rather than demoed.
+Ten years in data engineering, the last seven on GCP. More recently I have been
+building RAG systems that run in production.
 
-The thing I care about: an AI system you can't evaluate is a prototype, whatever
-it is running on. Retrieval quality belongs in CI next to the unit tests.
+On production RAG systems I run retrieval evaluation in CI next to the unit
+tests, and I capture the evaluation baselines from real traffic.
 
-That applies to how I build, too. I lean on AI heavily and measure everything it
-produces — the `DECISIONS.md` in the RAG repo below is what the measuring part
-looks like, and what the tooling can't hand you.
+I use AI tools heavily when I build. In production that code goes through the
+same tests and evaluation as any other, and when something breaks I write down
+the cause and the fix. The `DECISIONS.md` in rag-hybrid-citations below is an
+example.
 
 ---
 
 ## What I've built
 
-**Industrial RAG in production** — On-premise system for a manufacturing client
-in Spain. Operators query machine manuals, maintenance procedures and captured
+**Industrial RAG in production.** On-premise system for an industrial client in
+Europe. Operators query machine manuals, maintenance procedures and captured
 plant knowledge from tablets on the floor.
 
 - ~16,000 queries in a 7-day window
 - RAGAS faithfulness **0.96 median**, context precision **0.997**, captured
   weekly from production and versioned as baselines
-- **307 automated tests** and 5 CI pipelines — tests, security, regression,
-  retrieval eval, baseline capture
-- 10 containers: FastAPI + SQLAlchemy async, PostgreSQL, Qdrant, Ollama,
-  Celery + Redis, Vue 3 PWA, nginx, NVIDIA GPU
+- **307 automated tests** and 5 CI pipelines (tests, security, regression,
+  retrieval eval, baseline capture)
+- Runs on-premise in Docker with an NVIDIA GPU: FastAPI + SQLAlchemy async,
+  PostgreSQL, Qdrant, Ollama, Celery + Redis, Vue 3 PWA, nginx
 
-**Analytical platform for a national retail group** — **2,702 Dataform models**
-in production across seven repositories, layered STG → DW → PUB: conformed
-dimensions, fact tables, pricing and campaign domains.
+**Analytical platform for a national retail group.** **2,702 Dataform models**
+in production across seven client repositories, in STG, DW and PUB layers:
+conformed dimensions, fact tables, pricing and campaign domains.
 
-**Tax and banking data extraction** — Multi-tenant service that connects
+**Tax and banking data extraction.** Multi-tenant service that connects
 directly to Chile's tax authority and six bank portals via Playwright. 45
 FastAPI routers, 162 test files, swappable adapter behind one environment
 variable so the downstream contract never changes.
 
-**Real-time voice agent** — Twilio → Deepgram → Groq → Cartesia, bidirectional
-mulaw/8000 audio over WebSocket with a jitter buffer. Spanish-language
-collections and customer service.
+**Real-time voice agent.** Phone calls through Twilio, with Deepgram for
+speech-to-text, Groq for the language model and Cartesia for text-to-speech.
+Bidirectional mulaw/8000 audio over WebSocket with a jitter buffer.
+Spanish-language collections and customer service.
 
 ---
 
@@ -94,7 +95,7 @@ how each was decided and measured
 reranking with circuit breakers · Qdrant · pgvector + HNSW · OpenAI · Claude ·
 Gemini · Mistral · Ollama · faster-whisper
 
-**Data** BigQuery · Dataform · DBT · Apache Beam · Dataflow · Pub/Sub · Airflow ·
+**Data** BigQuery · Dataform · dbt · Apache Beam · Dataflow · Pub/Sub · Airflow ·
 Polars · PostgreSQL
 
 **Backend** Python · FastAPI · SQLAlchemy 2.0 async · Celery · TypeScript ·
